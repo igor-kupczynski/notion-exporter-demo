@@ -1,0 +1,16 @@
+name: Export notion pages from the test workspace
+
+on:
+  schedule:
+  - cron: "0 */6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: igor-kupczynski/notion-exporter@main
+        with:
+          pages: e9ddb02b4745455097ad9d5fef6336a2,e65ccf14e13b48d1a6d1b14cd84c4bed
+          output-dir: notion-backup
+          notion-token: ${{ secrets.NOTION_TOKEN }}
